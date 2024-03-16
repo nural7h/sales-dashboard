@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+      <h1>Sales Dashboard</h1>
+    <h3>Number of customers: <span id="count"></span></h3>
+    
+    <button id="showCustomersBtn">Show Customers</button>
+    <ul class="customer-list">
+      <!-- customers will be loaded here by the javascript -->
+    </ul>
+
+    <h3>Number of orders: <span id="ordersNum"></span></h3>
+    
+    <button id="showOrdersBtn">Show Orders</button>
+    <ul class="orders-list">
+      <!-- orders will be loaded here by the javascript -->
+    </ul>
+
+    <h3>Number of items: <span id="itemsNum"></span></h3>
+    
+    <button id="showItemsBtn">Show Items</button>
+    <ul class="items-list">
+      <!-- items will be loaded here by the javascript -->
+    </ul>
+    </div>
+
+    <script src="scriptCustomers.js"></script>  
+    <script src="scriptOrders.js"></script>
+    <script src="scriptItems.js"></script>
+</body>
+</html>

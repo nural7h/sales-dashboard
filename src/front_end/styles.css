@@ -1,0 +1,82 @@
+.customer-list{
+  display: none;
+}
+
+.orders-list{
+  display: none;
+}
+.items-list{
+  display: none;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h3 {
+  color: #555;
+  margin-bottom: 15px;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.customer-list,
+.orders-list,
+.items-list {
+  display: none;
+}
+
+/* Styling for list items */
+ul.customer-list li,
+ul.orders-list li,
+ul.items-list li {
+  padding: 10px;
+  margin-bottom: 5px;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+ul.customer-list li:hover,
+ul.orders-list li:hover,
+ul.items-list li:hover {
+  background-color: #e9e9e9;
+}
+
+
