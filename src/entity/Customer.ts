@@ -1,10 +1,10 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm"
 import { Order } from "./Order";
 
-@Entity()
+@Entity()   // intializing the class as entity
 export class Customer {
 
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn()   // primary key
   id: number
 
   @Column()

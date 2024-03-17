@@ -1,11 +1,14 @@
-import { AppDataSource } from "../data-source"
-import { NextFunction, Request, Response } from "express"
+import { AppDataSource } from "../data-source" // this manages the data
+import { Request, Response } from "express"
 import { Customer } from "../entity/Customer"
 
-export class CustomerController {
+export class CustomerController {  
+    //using export class to be able to access this class
 
+    //retrieving a repository for the customer class
     private customerRepository = AppDataSource.getRepository(Customer)
 
+    //method fetching all the customers
     async all() {
         return this.customerRepository.find()
     }
@@ -23,7 +26,7 @@ export class CustomerController {
         }
         return user
     }
-
+    //method to create a customer
     async save(request: Request) {
         const { firstName, lastName, email } = request.body;
 
@@ -36,6 +39,7 @@ export class CustomerController {
         return this.customerRepository.save(customer)
     }
 
+    //method to delete a customer
     async remove(request: Request) {
         const id = parseInt(request.params.id)
 
@@ -50,6 +54,7 @@ export class CustomerController {
         return "customer has been removed"
     }
 
+    //method to count the customers
     async count(response: Response) {
         const count = await this.customerRepository.count();
         return response.json({ count });

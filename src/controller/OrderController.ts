@@ -6,10 +6,12 @@ export class OrderController {
 
     private orderRepository = AppDataSource.getRepository(Order)
 
+    //getting all the orders
     async all(request: Request, response: Response, next: NextFunction) {
         return this.orderRepository.find()
     }
 
+    //getting one spesific order ny using id
     async one(request: Request, response: Response, next: NextFunction) {
         const id = parseInt(request.params.id)
 
@@ -24,6 +26,7 @@ export class OrderController {
         return user
     }
 
+    //method for creating an order
     async save(request: Request, response: Response, next: NextFunction) {
         const { purchaseDate, country, device, customer, items } = request.body;
 
@@ -38,6 +41,7 @@ export class OrderController {
         return this.orderRepository.save(order)
     }
 
+    //method for deleting an order
     async remove(request: Request, response: Response, next: NextFunction) {
         const id = parseInt(request.params.id)
 
