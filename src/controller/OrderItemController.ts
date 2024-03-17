@@ -1,16 +1,16 @@
 import { AppDataSource } from "../data-source"
-import { NextFunction, Request, Response } from "express"
+import { Request } from "express"
 import { OrderItem } from "../entity/OrderItem"
 
 export class OrderItemController {
 
     private orderItemRepository = AppDataSource.getRepository(OrderItem)
 
-    async all(request: Request, response: Response, next: NextFunction) {
+    async all() {
         return this.orderItemRepository.find()
     }
 
-    async one(request: Request, response: Response, next: NextFunction) {
+    async one(request: Request) {
         const id = parseInt(request.params.id)
 
 
@@ -24,7 +24,7 @@ export class OrderItemController {
         return item
     }
 
-    async save(request: Request, response: Response, next: NextFunction) {
+    async save(request: Request) {
         const { EAN, quantity, price } = request.body;
 
         const item = Object.assign(new OrderItem(), {
@@ -37,7 +37,7 @@ export class OrderItemController {
         return this.orderItemRepository.save(item)
     }
 
-    async remove(request: Request, response: Response, next: NextFunction) {
+    async remove(request: Request) {
         const id = parseInt(request.params.id)
 
         let itemToRemove = await this.orderItemRepository.findOneBy({ id })

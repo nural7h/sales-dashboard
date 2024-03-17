@@ -1,16 +1,16 @@
 import { AppDataSource } from "../data-source"
-import { NextFunction, Request, Response } from "express"
+import { Request } from "express"
 import { User } from "../entity/User"
 
 export class UserController {
 
     private userRepository = AppDataSource.getRepository(User)
 
-    async all(request: Request, response: Response, next: NextFunction) {
+    async all() {
         return this.userRepository.find()
     }
 
-    async one(request: Request, response: Response, next: NextFunction) {
+    async one(request: Request) {
         const id = parseInt(request.params.id)
 
 
@@ -24,7 +24,7 @@ export class UserController {
         return user
     }
 
-    async save(request: Request, response: Response, next: NextFunction) {
+    async save(request: Request) {
         const { firstName, lastName, age } = request.body;
 
         const user = Object.assign(new User(), {
@@ -36,7 +36,7 @@ export class UserController {
         return this.userRepository.save(user)
     }
 
-    async remove(request: Request, response: Response, next: NextFunction) {
+    async remove(request: Request) {
         const id = parseInt(request.params.id)
 
         let userToRemove = await this.userRepository.findOneBy({ id })

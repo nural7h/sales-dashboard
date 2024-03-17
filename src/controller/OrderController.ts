@@ -1,5 +1,5 @@
 import { AppDataSource } from "../data-source"
-import { NextFunction, Request, Response } from "express"
+import { Request} from "express"
 import { Order } from "../entity/Order"
 
 export class OrderController {
@@ -7,12 +7,12 @@ export class OrderController {
     private orderRepository = AppDataSource.getRepository(Order)
 
     //getting all the orders
-    async all(request: Request, response: Response, next: NextFunction) {
+    async all() {
         return this.orderRepository.find()
     }
 
     //getting one spesific order ny using id
-    async one(request: Request, response: Response, next: NextFunction) {
+    async one(request: Request) {
         const id = parseInt(request.params.id)
 
 
@@ -27,7 +27,7 @@ export class OrderController {
     }
 
     //method for creating an order
-    async save(request: Request, response: Response, next: NextFunction) {
+    async save(request: Request) {
         const { purchaseDate, country, device, customer, items } = request.body;
 
         const order = Object.assign(new Order(), {
@@ -42,7 +42,7 @@ export class OrderController {
     }
 
     //method for deleting an order
-    async remove(request: Request, response: Response, next: NextFunction) {
+    async remove(request: Request) {
         const id = parseInt(request.params.id)
 
         let customerToRemove = await this.orderRepository.findOneBy({ id })
